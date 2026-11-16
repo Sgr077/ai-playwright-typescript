@@ -1,0 +1,17 @@
+
+{
+  "name": "ai-playwright-typescript",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "tsx src/login.spec.ts"
+  },
+  "dependencies": {
+    "playwright-core": "^1.56.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  }
+}
