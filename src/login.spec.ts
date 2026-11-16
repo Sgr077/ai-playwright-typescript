@@ -17,26 +17,26 @@ async function runLoginPageTest() {
     const context = browser.contexts()[0];
     const page = await context.newPage();
 
-    console.log('Opening Rahul Shetty login page');
-
     await page.goto(
       'https://rahulshettyacademy.com/loginpagePractise/',
       { waitUntil: 'domcontentloaded' }
     );
 
-    const title = await page.title();
-
     const username = page.locator('#username');
     const password = page.locator('#password');
     const loginButton = page.locator('#signInBtn');
 
-    assert.ok(await username.isVisible(), 'Username field missing');
-    assert.ok(await password.isVisible(), 'Password field missing');
-    assert.ok(await loginButton.isVisible(), 'Login button missing');
+    await username.waitFor({ state: 'visible' });
+    await password.waitFor({ state: 'visible' });
+    await loginButton.waitFor({ state: 'visible' });
+
+    assert.ok(await username.isVisible());
+    assert.ok(await password.isVisible());
+    assert.ok(await loginButton.isVisible());
 
     console.log('TEST PASSED');
+
     console.log({
-      pageTitle: title,
       usernameVisible: true,
       passwordVisible: true,
       loginButtonVisible: true
@@ -46,8 +46,6 @@ async function runLoginPageTest() {
     await browser.close();
   }
 }
-
-
 
 runLoginPageTest().catch(error => {
   console.error('TEST FAILED:', error);
