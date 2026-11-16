@@ -47,6 +47,8 @@ async function runLoginPageTest() {
   }
 }
 
+
+
 runLoginPageTest().catch(error => {
   console.error('TEST FAILED:', error);
   process.exitCode = 1;
